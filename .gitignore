@@ -1,0 +1,27 @@
+﻿# Java compiled files
+*.class
+*.log
+
+# Build output
+target/
+build/
+out/
+bin/
+
+# IDE files
+.idea/
+*.iml
+
+# Node.js dependencies and build output
+node_modules/
+dist/
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini

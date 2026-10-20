@@ -1,0 +1,9 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wishlist | ShopSphere Motors</title><link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css"></head>
+<body><header class="site-header"><a class="brand" href="index.jsp">ShopSphere<span>Motors</span></a><nav><a href="cars">Explore cars</a><a href="my-bookings">My bookings</a><a href="home.jsp">Dashboard</a></nav></header>
+<main class="page-wrap"><div class="page-title"><p class="eyebrow">SAVED FOR LATER</p><h1>Your wishlist.</h1></div>
+<c:choose><c:when test="${empty cars}"><div class="empty-state"><h2>Your wishlist is empty</h2><p>Save a car to keep it here.</p><a class="button" href="cars">Explore cars</a></div></c:when><c:otherwise>
+<div class="car-grid"><c:forEach var="car" items="${cars}"><article class="car-card"><a class="car-image" href="car-details?id=${car.id}"><img src="<c:out value='${car.image}'/>" alt="<c:out value='${car.name}'/>" onerror="this.src='https://placehold.co/800x500/17202b/f4f0e8?text=ShopSphere+Motors'"></a><div class="car-card-body"><h2><c:out value="${car.name}"/></h2><p class="muted"><c:out value="${car.categoryName}"/></p><p class="car-price">₹ <c:out value="${car.price}"/></p><div class="card-actions"><a class="button button-small" href="car-details?id=${car.id}">View details</a><form action="wishlist" method="post"><input type="hidden" name="carId" value="${car.id}"><input type="hidden" name="action" value="remove"><button class="button button-small button-danger" type="submit">Remove</button></form></div></div></article></c:forEach></div></c:otherwise></c:choose>
+</main><footer class="footer">© 2026 ShopSphere Motors</footer></body></html>
